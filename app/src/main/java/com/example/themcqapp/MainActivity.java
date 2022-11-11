@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void generateNextQuestion(){
+        if(currentQuestionAsked == numberOfQuestions - 1) currentQuestionAsked = 0;
         this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
         this.objectName.setText(this.questions[currentQuestionAsked].question);
         currentQuestionAsked ++;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.objectName = findViewById(R.id.objectName);
         this.nextQuestionBtn = findViewById(R.id.nextQuestionBtn);
         this.nextQuestionBtn.setOnClickListener(this);
+        this.nextQuestionBtn.setEnabled(false);
         this.generateNextQuestion();
     }
 
