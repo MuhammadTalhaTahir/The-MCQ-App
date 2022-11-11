@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //views
     ImageView objectImage;
     TextView objectName;
+    Button nextQuestionBtn;
 
     public MainActivity(){
         this.questions = new Question[this.numberOfQuestions];
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //initializing views
         this.objectImage = findViewById(R.id.objectImage);
         this.objectName = findViewById(R.id.objectName);
+        this.nextQuestionBtn = findViewById(R.id.nextQuestionBtn);
+        this.nextQuestionBtn.setOnClickListener(this);
         this.generateNextQuestion();
     }
 
