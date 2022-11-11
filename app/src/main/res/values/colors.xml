@@ -11,4 +11,5 @@
     <color name="applicationBackground">#fef4de</color>
     <color name="applicationBlack">#808185</color>
     <color name="applicationDisabledButton">#cccccc</color>
+    <color name="applicationGreen">#80d089</color>
 </resources>

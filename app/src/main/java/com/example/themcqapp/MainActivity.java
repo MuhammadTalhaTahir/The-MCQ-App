@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +17,7 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    int numberOfQuestions = 4, currentQuestionAsked = 0;
+    int numberOfQuestions = 4, currentQuestionAsked = -1, numberofOptions = 4;
     Question[] questions;
 
     //views
@@ -56,23 +58,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.questions[i] = temp;
         }
     }
-    private void initializeOptions(){
+    private void initializeOptions() {
         char rightAnswer = this.questions[currentQuestionAsked].rightAnswer;
         Random rand = new Random();
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < numberofOptions; i++) {
             int tempNumber = rand.nextInt(26) + 65;
-            char tempOption = (char)tempNumber;
-            this.options[i].setText("" + tempOption);
+            char tempOption = (char) tempNumber;
+            this.options[i].setText(Character.toString(tempOption));    //typecasting char to strings
+            this.options[i].setBackgroundColor(Color.WHITE);
         }
-        this.options[rand.nextInt(4)].setText(""+rightAnswer);
+        this.options[rand.nextInt(4)].setText(Character.toString(rightAnswer));
     }
+
     private void generateNextQuestion(){
-        if(currentQuestionAsked == numberOfQuestions - 1) currentQuestionAsked = 0;
+        currentQuestionAsked ++;
+        if(currentQuestionAsked == numberOfQuestions) currentQuestionAsked = 0;
         this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
         this.objectName.setText(this.questions[currentQuestionAsked].question);
         this.initializeOptions();
-        currentQuestionAsked ++;
     }
+    private void checkAnswer(int id){
+        String rightAnswer = Character.toString(questions[currentQuestionAsked].rightAnswer);
+        for(int i=0;i<numberofOptions;i++){
+            String answer = options[i].getText().toString();
+            if(answer.equals(rightAnswer)){
+                options[i].setBackgroundColor(Color.parseColor("#80d089"));
+            }
+            if(options[i].getId() == id && !answer.equals(rightAnswer)){
+                options[i].setBackgroundColor(Color.parseColor("#f7351b"));
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.nextQuestionBtn = findViewById(R.id.nextQuestionBtn);
         this.nextQuestionBtn.setOnClickListener(this);
         //this.nextQuestionBtn.setEnabled(false);
-        this.options = new Button[4];
+        this.options = new Button[numberofOptions];
         this.options[0] = findViewById(R.id.optionA);
         this.options[0].setOnClickListener(this);
         this.options[1] = findViewById(R.id.optionB);
@@ -101,12 +118,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.nextQuestionBtn:{
-                this.generateNextQuestion();
-                break;
-            }
-
+        if (view.getId() == R.id.nextQuestionBtn) {
+            this.generateNextQuestion();
+        } else {
+            this.checkAnswer(view.getId());
         }
     }
 }
