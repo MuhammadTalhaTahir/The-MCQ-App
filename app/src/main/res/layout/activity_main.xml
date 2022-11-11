@@ -9,17 +9,17 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/objectImage"
         android:layout_width="236dp"
         android:layout_height="199dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/orange"
+        android:src="@drawable/cattwo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/objectName"
         android:layout_width="376dp"
         android:layout_height="77dp"
         android:layout_marginTop="28dp"
@@ -31,10 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/objectImage" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/optionA"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
@@ -45,10 +45,10 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/objectName" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/optionB"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/white"
@@ -56,12 +56,12 @@
         android:textAlignment="textStart"
         android:textColor="@color/applicationBlack"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintEnd_toEndOf="@+id/optionA"
+        app:layout_constraintStart_toStartOf="@+id/optionA"
+        app:layout_constraintTop_toBottomOf="@+id/optionA" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/optionC"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/white"
@@ -69,12 +69,12 @@
         android:textAlignment="textStart"
         android:textColor="@color/applicationBlack"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@+id/optionB"
+        app:layout_constraintStart_toStartOf="@+id/optionB"
+        app:layout_constraintTop_toBottomOf="@+id/optionB" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/optionD"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/white"
@@ -82,12 +82,12 @@
         android:textAlignment="textStart"
         android:textColor="@color/applicationBlack"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintEnd_toEndOf="@+id/optionC"
+        app:layout_constraintStart_toStartOf="@+id/optionC"
+        app:layout_constraintTop_toBottomOf="@+id/optionC" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/nextQuestionBtn"
         android:layout_width="349dp"
         android:layout_height="59dp"
         android:layout_marginBottom="32dp"
