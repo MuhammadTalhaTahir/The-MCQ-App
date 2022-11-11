@@ -13,7 +13,7 @@
         android:layout_width="236dp"
         android:layout_height="199dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/cat"
+        android:src="@drawable/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_height="77dp"
         android:layout_marginTop="28dp"
         android:letterSpacing="0.3"
-        android:text="C_T"
+        android:text="OR_NGE"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="60sp"
