@@ -78,8 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.initializeOptions();
     }
     private void toggleOptionButtons(boolean enable){
-        //this function disables option buttons and enable next button.
-        //or this function enable option buttons and disable next button.
+        /*this function disables option buttons and enable next button.
+                                    OR
+        this function enable option buttons and disable next button.*/
+
         for(int i=0;i<this.numberofOptions;i++){
             options[i].setEnabled(enable);
         }
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.options[3] = findViewById(R.id.optionD);
         this.options[3].setOnClickListener(this);
 
-        //starting the MCQS
+        //starting The MCQS App
         this.generateNextQuestion();
     }
 
