@@ -77,6 +77,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.objectName.setText(this.questions[currentQuestionAsked].question);
         this.initializeOptions();
     }
+    private void toggleOptionButtons(boolean enable){
+        //this function disables option buttons and enable next button.
+        //or this function enable option buttons and disable next button.
+        for(int i=0;i<this.numberofOptions;i++){
+            options[i].setEnabled(enable);
+        }
+        this.nextQuestionBtn.setEnabled(!enable);
+        String color = enable?"#cccccc":"#FA9E40";
+        this.nextQuestionBtn.setBackgroundColor(Color.parseColor(color));
+    }
     private void checkAnswer(int id){
         String rightAnswer = Character.toString(questions[currentQuestionAsked].rightAnswer);
         for(int i=0;i<numberofOptions;i++){
@@ -88,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 options[i].setBackgroundColor(Color.parseColor("#f7351b"));
             }
         }
+        this.toggleOptionButtons(false);
     }
 
     @Override
@@ -100,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.objectName = findViewById(R.id.objectName);
         this.nextQuestionBtn = findViewById(R.id.nextQuestionBtn);
         this.nextQuestionBtn.setOnClickListener(this);
-        //this.nextQuestionBtn.setEnabled(false);
+        this.nextQuestionBtn.setEnabled(false);
         this.options = new Button[numberofOptions];
         this.options[0] = findViewById(R.id.optionA);
         this.options[0].setOnClickListener(this);
@@ -120,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.nextQuestionBtn) {
             this.generateNextQuestion();
+            this.toggleOptionButtons(true);
         } else {
             this.checkAnswer(view.getId());
         }
