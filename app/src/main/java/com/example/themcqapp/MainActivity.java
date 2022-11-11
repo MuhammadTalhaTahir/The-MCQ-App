@@ -2,14 +2,22 @@ package com.example.themcqapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
 
-public class MainActivity extends AppCompatActivity {
-    int numberOfQuestions = 4;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    int numberOfQuestions = 4, currentQuestionAsked = 0;
     Question[] questions;
+
+    //views
+    ImageView objectImage;
+    TextView objectName;
 
     public MainActivity(){
         this.questions = new Question[this.numberOfQuestions];
@@ -30,10 +38,9 @@ public class MainActivity extends AppCompatActivity {
             //randomly selecting an index from the question statement based on its length.
             missingIndex = rand.nextInt(this.questions[i].question.length());
             this.questions[i].rightAnswer = this.questions[i].question.charAt(missingIndex);
-            this.questions[i].question.replace(this.questions[i].rightAnswer, '_');
+            this.questions[i].question = this.questions[i].question.replace(this.questions[i].rightAnswer, '_');
         }
     }
-
     private void shuffle(){
         int index;
         Random rand = new Random();
@@ -44,10 +51,31 @@ public class MainActivity extends AppCompatActivity {
             this.questions[i] = temp;
         }
     }
+    private void generateNextQuestion(){
+        this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
+        this.objectName.setText(this.questions[currentQuestionAsked].question);
+        currentQuestionAsked ++;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //initializing views
+        this.objectImage = findViewById(R.id.objectImage);
+        this.objectName = findViewById(R.id.objectName);
+        this.generateNextQuestion();
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.nextQuestionBtn:{
+                this.generateNextQuestion();
+                break;
+            }
+
+        }
     }
 }
