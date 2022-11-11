@@ -3,7 +3,9 @@ package com.example.themcqapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView objectImage;
     TextView objectName;
     Button nextQuestionBtn;
+    Button[] options;
 
     public MainActivity(){
         this.questions = new Question[this.numberOfQuestions];
@@ -53,10 +56,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.questions[i] = temp;
         }
     }
+    private void initializeOptions(){
+        char rightAnswer = this.questions[currentQuestionAsked].rightAnswer;
+        Random rand = new Random();
+        for(int i=0;i<4;i++){
+            int tempNumber = rand.nextInt(26) + 65;
+            char tempOption = (char)tempNumber;
+            this.options[i].setText("" + tempOption);
+        }
+        this.options[rand.nextInt(4)].setText(""+rightAnswer);
+    }
     private void generateNextQuestion(){
         if(currentQuestionAsked == numberOfQuestions - 1) currentQuestionAsked = 0;
         this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
         this.objectName.setText(this.questions[currentQuestionAsked].question);
+        this.initializeOptions();
         currentQuestionAsked ++;
     }
     @Override
@@ -69,7 +83,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.objectName = findViewById(R.id.objectName);
         this.nextQuestionBtn = findViewById(R.id.nextQuestionBtn);
         this.nextQuestionBtn.setOnClickListener(this);
-        this.nextQuestionBtn.setEnabled(false);
+        //this.nextQuestionBtn.setEnabled(false);
+        this.options = new Button[4];
+        this.options[0] = findViewById(R.id.optionA);
+        this.options[0].setOnClickListener(this);
+        this.options[1] = findViewById(R.id.optionB);
+        this.options[1].setOnClickListener(this);
+        this.options[2] = findViewById(R.id.optionC);
+        this.options[2].setOnClickListener(this);
+        this.options[3] = findViewById(R.id.optionD);
+        this.options[3].setOnClickListener(this);
+
+        //starting the MCQS
         this.generateNextQuestion();
     }
 
