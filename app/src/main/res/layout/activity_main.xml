@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/applicationBackground">
 
 
     <ImageView
@@ -34,32 +35,56 @@
         android:id="@+id/button"
         android:layout_width="350dp"
         android:layout_height="55dp"
+        android:layout_marginTop="58dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="341dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:textAlignment="textStart"
+        android:textColor="@color/applicationBlack"
+        android:textStyle="bold|italic"
+        android:backgroundTint="@color/white" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="350dp"
         android:layout_height="55dp"
+        android:layout_marginTop="8dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="411dp" />
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        android:textAlignment="textStart"
+        android:textColor="@color/applicationBlack"
+        android:textStyle="bold|italic"
+        android:backgroundTint="@color/white" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="350dp"
         android:layout_height="55dp"
+        android:layout_marginTop="8dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="479dp" />
+        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        android:textAlignment="textStart"
+        android:textColor="@color/applicationBlack"
+        android:textStyle="bold|italic"
+        android:backgroundTint="@color/white" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="350dp"
         android:layout_height="55dp"
+        android:layout_marginTop="8dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="551dp" />
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        android:textAlignment="textStart"
+        android:textColor="@color/applicationBlack"
+        android:textStyle="bold|italic"
+        android:backgroundTint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
