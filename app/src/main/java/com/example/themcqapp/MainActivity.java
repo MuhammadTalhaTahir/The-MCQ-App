@@ -31,14 +31,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public MainActivity(){
         this.questions = new Question[this.numberOfQuestions];
         //initializing questions
-        this.questions[0] = new Question(R.drawable.cat, "CAT");
-        this.questions[1] = new Question(R.drawable.dog, "DOG");
-        this.questions[2] = new Question(R.drawable.car, "CAR");
-        this.questions[3] = new Question(R.drawable.orange, "ORANGE");
+        this.initializeQuestions();
         //shuffling the array.
         this.shuffle();
         //initializing the array with right answers based on randomly selected missing letter in the question statement.
         this.initializeRightAnswers();
+    }
+    private void initializeQuestions(){
+        this.questions[0] = new Question(R.drawable.cat, "CAT");
+        this.questions[1] = new Question(R.drawable.dog, "DOG");
+        this.questions[2] = new Question(R.drawable.car, "CAR");
+        this.questions[3] = new Question(R.drawable.orange, "ORANGE");
     }
     private void initializeRightAnswers(){
         int missingIndex;
@@ -74,16 +77,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void generateNextQuestion(){
         currentQuestionAsked ++;
-        if(currentQuestionAsked == numberOfQuestions)currentQuestionAsked = 0;
         this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
         this.objectName.setText(this.questions[currentQuestionAsked].question);
-        questionCount.setText(Integer.toString(currentQuestionAsked + 1));
+        this.displayResult();
         this.initializeOptions();
     }
     private void displayResult(){
         //this function is responsible for updating the question counts at the end.
         correctCount.setText(Integer.toString(correct));
         wrongCount.setText(Integer.toString(wrong));
+        questionCount.setText(Integer.toString(currentQuestionAsked + 1));
     }
     private void toggleOptionButtons(boolean enable){
         /*this function disables option buttons and enable next button.
@@ -112,6 +115,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         this.displayResult();
         this.toggleOptionButtons(false);
+
+        //this check if the app needs to be reset(number of questions are 10)
+        if(this.currentQuestionAsked + 1 == this.numberofOptions){
+            // converting next button to reset button.
+            nextQuestionBtn.setText("Reset");
+        }
+    }
+    private void resetApp(){
+        currentQuestionAsked = 0;
+        correct = 0;
+        wrong = 0;
+        this.displayResult();
+        this.initializeQuestions();
+        this.shuffle();
+        this.initializeRightAnswers();
+        this.initializeOptions();
+        this.generateNextQuestion();
     }
 
     @Override
@@ -146,7 +166,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.nextQuestionBtn) {
-            this.generateNextQuestion();
+            if(((Button)view).getText().toString().equals("Next"))
+                this.generateNextQuestion();
+            else
+                this.resetApp();
             this.toggleOptionButtons(true);
         } else {
             this.checkAnswer(view.getId());
