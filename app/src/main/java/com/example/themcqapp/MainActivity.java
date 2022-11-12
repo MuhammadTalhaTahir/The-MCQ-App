@@ -7,8 +7,10 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,10 +74,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void generateNextQuestion(){
         currentQuestionAsked ++;
-        if(currentQuestionAsked == numberOfQuestions) currentQuestionAsked = 0;
+        if(currentQuestionAsked == numberOfQuestions){
+            currentQuestionAsked = 0;
+            this.displayResult();
+        }
         this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
         this.objectName.setText(this.questions[currentQuestionAsked].question);
         this.initializeOptions();
+    }
+    private void displayResult(){
+        //this function is responsible for removing views from the
     }
     private void toggleOptionButtons(boolean enable){
         /*this function disables option buttons and enable next button.
