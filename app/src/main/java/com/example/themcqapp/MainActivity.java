@@ -127,17 +127,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(this.currentQuestionAsked + 1 == this.numberOfQuestions){
             // converting next button to reset button.
             nextQuestionBtn.setText("Reset");
+            nextQuestionBtn.setBackgroundColor(Color.parseColor("#72A8CD"));
         }
     }
     private void resetApp(){
-        currentQuestionAsked = 0;
+        nextQuestionBtn.setText("Next");
+        nextQuestionBtn.setBackgroundColor(Color.parseColor("#FA9E40"));
+        currentQuestionAsked = -1;
         correct = 0;
         wrong = 0;
-        this.displayResult();
+        //this.displayResult();
         this.initializeQuestions();
         this.shuffle();
         this.initializeRightAnswers();
-        this.initializeOptions();
         this.generateNextQuestion();
     }
 
