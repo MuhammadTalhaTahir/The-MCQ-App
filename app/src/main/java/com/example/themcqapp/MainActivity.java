@@ -19,12 +19,12 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    int numberOfQuestions = 4, currentQuestionAsked = -1, numberofOptions = 4;
+    int numberOfQuestions = 4, currentQuestionAsked = -1, numberofOptions = 4, correct = 0, wrong = 0;
     Question[] questions;
 
     //views
     ImageView objectImage;
-    TextView objectName;
+    TextView objectName, correctCount, wrongCount, questionCount;
     Button nextQuestionBtn;
     Button[] options;
 
@@ -74,16 +74,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void generateNextQuestion(){
         currentQuestionAsked ++;
-        if(currentQuestionAsked == numberOfQuestions){
-            currentQuestionAsked = 0;
-            this.displayResult();
-        }
+        if(currentQuestionAsked == numberOfQuestions)currentQuestionAsked = 0;
         this.objectImage.setImageResource(this.questions[currentQuestionAsked].imageId);
         this.objectName.setText(this.questions[currentQuestionAsked].question);
+        questionCount.setText(Integer.toString(currentQuestionAsked + 1));
         this.initializeOptions();
     }
     private void displayResult(){
-        //this function is responsible for removing views from the
+        //this function is responsible for updating the question counts at the end.
+        correctCount.setText(Integer.toString(correct));
+        wrongCount.setText(Integer.toString(wrong));
     }
     private void toggleOptionButtons(boolean enable){
         /*this function disables option buttons and enable next button.
@@ -106,8 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if(options[i].getId() == id && !answer.equals(rightAnswer)){
                 options[i].setBackgroundColor(Color.parseColor("#f7351b"));
+                wrong ++;
             }
+            if(options[i].getId() == id && answer.equals(rightAnswer)) correct++;
         }
+        this.displayResult();
         this.toggleOptionButtons(false);
     }
 
@@ -131,6 +134,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.options[2].setOnClickListener(this);
         this.options[3] = findViewById(R.id.optionD);
         this.options[3].setOnClickListener(this);
+        this.correctCount = findViewById(R.id.correctCount);
+        this.wrongCount = findViewById(R.id.wrongCount);
+        this.questionCount = findViewById(R.id.questionCount);
 
         //starting The MCQS App
         this.generateNextQuestion();
