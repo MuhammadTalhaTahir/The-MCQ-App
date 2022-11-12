@@ -7,18 +7,6 @@
     tools:context=".MainActivity"
     android:background="@color/applicationBackground">
 
-    <TextView
-        android:id="@+id/wrongCount2"
-        android:layout_width="97dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="3dp"
-        android:text="6"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <ImageView
         android:id="@+id/objectImage"
         android:layout_width="236dp"
@@ -48,14 +36,15 @@
         android:id="@+id/optionA"
         android:layout_width="350dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/white"
         android:text="Button"
         android:textAlignment="textStart"
         android:textColor="@color/applicationBlack"
-        android:textStyle="italic"
         android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/objectName" />
 
@@ -101,36 +90,76 @@
         app:layout_constraintStart_toStartOf="@+id/optionC"
         app:layout_constraintTop_toBottomOf="@+id/optionC" />
 
-    <Button
-        android:id="@+id/nextQuestionBtn"
-        android:layout_width="349dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="32dp"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/wrongCount2"
+        android:layout_width="97dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/questionCount"
+        android:layout_width="97dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="3dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="97dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
+        android:text="/10"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/applicationDisabledButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/optionD" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="97dp"
         android:layout_height="24dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="Correct"
         android:textAlignment="textStart"
-        android:textStyle="bold"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/optionD" />
+
+    <TextView
+        android:id="@+id/correctCount"
+        android:layout_width="97dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="3dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="97dp"
         android:layout_height="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="Wrong"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -140,52 +169,16 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/optionD" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="97dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="28dp"
-        android:text="/10"
-        android:textAlignment="textEnd"
-        android:textStyle="bold"
-        android:textSize="18sp"
+    <Button
+        android:id="@+id/nextQuestionBtn"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/applicationDisabledButton"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionD" />
-
-    <TextView
-        android:id="@+id/correctCount"
-        android:layout_width="97dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="3dp"
-        android:text="4"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/wrongCount"
-        android:layout_width="97dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="3dp"
-        android:text="6"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-    <TextView
-        android:id="@+id/questionCount"
-        android:layout_width="97dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="3dp"
-        android:text="10"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
