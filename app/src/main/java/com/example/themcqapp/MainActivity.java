@@ -19,7 +19,7 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    int numberOfQuestions = 4, currentQuestionAsked = -1, numberofOptions = 4, correct = 0, wrong = 0;
+    int numberOfQuestions = 10, currentQuestionAsked = -1, numberofOptions = 4, correct = 0, wrong = 0;
     Question[] questions;
 
     //views
@@ -42,6 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.questions[1] = new Question(R.drawable.dog, "DOG");
         this.questions[2] = new Question(R.drawable.car, "CAR");
         this.questions[3] = new Question(R.drawable.orange, "ORANGE");
+        this.questions[4] = new Question(R.drawable.ball, "BALL");
+        this.questions[5] = new Question(R.drawable.plane, "PLANE");
+        this.questions[6] = new Question(R.drawable.phone, "PHONE");
+        this.questions[7] = new Question(R.drawable.bottle, "BOTTLE");
+        this.questions[8] = new Question(R.drawable.fire, "FIRE");
+        this.questions[9] = new Question(R.drawable.flower, "FLOWER");
+
     }
     private void initializeRightAnswers(){
         int missingIndex;
@@ -117,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.toggleOptionButtons(false);
 
         //this check if the app needs to be reset(number of questions are 10)
-        if(this.currentQuestionAsked + 1 == this.numberofOptions){
+        if(this.currentQuestionAsked + 1 == this.numberOfQuestions){
             // converting next button to reset button.
             nextQuestionBtn.setText("Reset");
         }
