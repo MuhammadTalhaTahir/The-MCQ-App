@@ -3,6 +3,7 @@ package com.example.themcqapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,15 +27,20 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case(R.id.startQuiz):
+            case(R.id.startQuiz): {
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("sessionId", this.generateSession());
                 startActivity(intent);
                 break;
+            }
             case(R.id.viewResult):
                 break;
-            case(R.id.gitRepoLink):
+            case(R.id.gitRepoLink): {
+                Uri repoLink = Uri.parse("https://github.com/MuhammadTalhaTahir/The-MCQ-App/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, repoLink);
+                startActivity(intent);
                 break;
+            }
         }
     }
 }
