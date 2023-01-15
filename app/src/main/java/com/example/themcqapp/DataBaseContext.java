@@ -54,4 +54,18 @@ public class DataBaseContext extends SQLiteOpenHelper {
         }
         return result;
     }
+    public ArrayList<Question> getQuestions(int sessionId){
+        String query = "select  question, rightAnswer, selectedAnswer  from results where sessionId =" + Integer.toString(sessionId);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<Question> result = new ArrayList<Question>();
+        while(cursor.moveToNext()){
+            result.add(new Question(
+                    cursor.getString(0),
+                    cursor.getString(1).charAt(0),
+                    cursor.getString(2).charAt(0)
+            ));
+        }
+        return result;
+    }
 }

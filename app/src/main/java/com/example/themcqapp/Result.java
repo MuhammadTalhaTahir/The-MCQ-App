@@ -29,7 +29,6 @@ public class Result extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(Result.this, DetailView.class);
                 Session itemData = (Session) sessionsListView.getItemAtPosition(i);
-
                 intent.putExtra("sessionId", itemData.sessionId);
                 startActivity(intent);
             }
