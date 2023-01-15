@@ -2,6 +2,8 @@ package com.example.themcqapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.LauncherActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +27,11 @@ public class Result extends AppCompatActivity {
         sessionsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new
+                Intent intent = new Intent(Result.this, DetailView.class);
+                Session itemData = (Session) sessionsListView.getItemAtPosition(i);
+
+                intent.putExtra("sessionId", itemData.sessionId);
+                startActivity(intent);
             }
         });
     }
