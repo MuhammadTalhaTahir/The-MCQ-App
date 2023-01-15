@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DataBaseContext extends SQLiteOpenHelper {
     public DataBaseContext(@Nullable Context context){
         super(context, "theMCQApp", null, 1);
@@ -42,5 +44,14 @@ public class DataBaseContext extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+    public ArrayList<Session> getSessions(){
+        ArrayList<Session> result = new ArrayList<Session>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor sessionsList = db.rawQuery("select sessionId, count(question) from results group by sessionId;", null);
+        while(sessionsList.moveToNext()){
+            result.add(new Session(sessionsList.getInt(0), sessionsList.getInt(1)));
+        }
+        return result;
     }
 }

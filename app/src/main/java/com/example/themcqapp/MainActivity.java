@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -138,16 +140,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void resetApp(){
-        nextQuestionBtn.setText("Next");
-        nextQuestionBtn.setBackgroundColor(Color.parseColor("#FA9E40"));
-        currentQuestionAsked = -1;
-        correct = 0;
-        wrong = 0;
-        //this.displayResult();
-        this.initializeQuestions();
-        this.shuffle();
-        this.initializeRightAnswers();
-        this.generateNextQuestion();
+//        nextQuestionBtn.setText("Next");
+//        nextQuestionBtn.setBackgroundColor(Color.parseColor("#FA9E40"));
+//        currentQuestionAsked = -1;
+//        correct = 0;
+//        wrong = 0;
+//        //this.displayResult();
+//        this.initializeQuestions();
+//        this.shuffle();
+//        this.initializeRightAnswers();
+//        this.generateNextQuestion();
+        Intent intent = new Intent(this, MenuScreen.class);
+        startActivity(intent);
     }
 
     @Override

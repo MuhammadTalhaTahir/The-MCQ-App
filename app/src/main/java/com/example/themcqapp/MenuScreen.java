@@ -35,8 +35,11 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             }
-            case(R.id.viewResult):
+            case(R.id.viewResult): {
+                Intent intent = new Intent(this, Result.class);
+                startActivity(intent);
                 break;
+            }
             case(R.id.gitRepoLink): {
                 Uri repoLink = Uri.parse("https://github.com/MuhammadTalhaTahir/The-MCQ-App/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, repoLink);
