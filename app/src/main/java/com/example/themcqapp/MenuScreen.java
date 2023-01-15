@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class MenuScreen extends AppCompatActivity implements View.OnClickListener{
     Button startButton, resultButton, linkButton;
+    DataBaseContext db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +21,10 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         startButton.setOnClickListener(this);
         resultButton.setOnClickListener(this);
         linkButton.setOnClickListener(this);
+        db = new DataBaseContext(this);
     }
     private int generateSession(){
-        return -1;
+        return db.getMaxSessionId() + 1;
     }
     @Override
     public void onClick(View view){
