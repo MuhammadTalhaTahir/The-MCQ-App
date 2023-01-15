@@ -7,7 +7,7 @@ public class Question {
     public int imageId;
     public String question;
     public char rightAnswer;
-    public char selectAnswer;
+    public char selectedAnswer;
     public Question(int i, String q){
         this.imageId = i;
         this.question = q;
