@@ -11,7 +11,7 @@
         android:id="@+id/textView13"
         android:layout_width="121dp"
         android:layout_height="57dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="132dp"
         android:text="Right Answers"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -49,13 +49,15 @@
         android:layout_width="match_parent"
         android:layout_height="499dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="2dp"
+        android:divider="@color/applicationOrange"
+        android:dividerHeight="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView12"

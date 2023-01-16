@@ -13,25 +13,28 @@
         android:id="@+id/questionView"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:textAlignment="center"
         android:layout_weight="3"
+        android:gravity="center"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/rightAnswerView"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:textAlignment="center"
         android:layout_weight="3"
+        android:gravity="center"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/selectedAnswerView"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
+        android:gravity="center"
         android:textAlignment="center"
         android:layout_weight="3"
         android:text="TextView" />
