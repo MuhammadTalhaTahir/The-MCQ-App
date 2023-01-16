@@ -135,21 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //this check if the app needs to be reset(number of questions are 10)
         if(this.currentQuestionAsked + 1 == this.numberOfQuestions){
             // converting next button to reset button.
-            nextQuestionBtn.setText("Reset");
+            nextQuestionBtn.setText("Submit Quiz");
             nextQuestionBtn.setBackgroundColor(Color.parseColor("#72A8CD"));
         }
     }
     private void resetApp(){
-//        nextQuestionBtn.setText("Next");
-//        nextQuestionBtn.setBackgroundColor(Color.parseColor("#FA9E40"));
-//        currentQuestionAsked = -1;
-//        correct = 0;
-//        wrong = 0;
-//        //this.displayResult();
-//        this.initializeQuestions();
-//        this.shuffle();
-//        this.initializeRightAnswers();
-//        this.generateNextQuestion();
         Intent intent = new Intent(this, MenuScreen.class);
         startActivity(intent);
     }
