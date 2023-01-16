@@ -52,7 +52,7 @@ public class DetailView extends AppCompatActivity {
         perView = findViewById(R.id.percentageView);
         ArrayList<Question> data = db.getQuestions(sessionId);
         this.calculateTotalRightAnswers(data);
-        ArrayAdapter<Question> adpt = new ArrayAdapter<Question>(this, android.R.layout.simple_list_item_1, data);
+        CustomListAdapter adpt = new CustomListAdapter(this, data);
         questionsList.setAdapter(adpt);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
