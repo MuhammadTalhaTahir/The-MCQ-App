@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,9 +29,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView objectName, correctCount, wrongCount, questionCount;
     Button nextQuestionBtn;
     Button[] options;
-
+    //DataBase
+    DataBaseContext db;
+    int sessionId;
     public MainActivity(){
         this.questions = new Question[this.numberOfQuestions];
+        this.db = new DataBaseContext(this);
         //initializing questions
         this.initializeQuestions();
         //shuffling the array.
@@ -117,30 +122,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(options[i].getId() == id && !answer.equals(rightAnswer)){
                 options[i].setBackgroundColor(Color.parseColor("#f7351b"));
                 wrong ++;
+                questions[currentQuestionAsked].selectedAnswer = answer.charAt(0); //since answer is a string.
             }
-            if(options[i].getId() == id && answer.equals(rightAnswer)) correct++;
+            if(options[i].getId() == id && answer.equals(rightAnswer)){
+                questions[currentQuestionAsked].selectedAnswer = answer.charAt(0); //since answer is a string.
+                correct++;
+            }
         }
         this.displayResult();
         this.toggleOptionButtons(false);
-
+        this.db.insertQuestion(questions[currentQuestionAsked], this.sessionId);
         //this check if the app needs to be reset(number of questions are 10)
         if(this.currentQuestionAsked + 1 == this.numberOfQuestions){
             // converting next button to reset button.
-            nextQuestionBtn.setText("Reset");
+            nextQuestionBtn.setText("Submit Quiz");
             nextQuestionBtn.setBackgroundColor(Color.parseColor("#72A8CD"));
         }
     }
     private void resetApp(){
-        nextQuestionBtn.setText("Next");
-        nextQuestionBtn.setBackgroundColor(Color.parseColor("#FA9E40"));
-        currentQuestionAsked = -1;
-        correct = 0;
-        wrong = 0;
-        //this.displayResult();
-        this.initializeQuestions();
-        this.shuffle();
-        this.initializeRightAnswers();
-        this.generateNextQuestion();
+        Intent intent = new Intent(this, MenuScreen.class);
+        startActivity(intent);
     }
 
     @Override
@@ -166,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.correctCount = findViewById(R.id.correctCount);
         this.wrongCount = findViewById(R.id.wrongCount);
         this.questionCount = findViewById(R.id.questionCount);
+        this.sessionId = getIntent().getIntExtra("sessionId", -1);
 
         //starting The MCQS App
         this.generateNextQuestion();
